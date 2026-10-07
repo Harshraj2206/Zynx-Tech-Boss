@@ -193,6 +193,13 @@ export const SEED_ACTIVITIES = [
 ];
 
 const getInitialState = () => {
+  const getSystemTheme = () => {
+    if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
+  };
+
   if (typeof window !== 'undefined') {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
@@ -200,7 +207,7 @@ const getInitialState = () => {
         const parsed = JSON.parse(saved);
         return {
           ...parsed,
-          theme: parsed.theme || 'dark',
+          theme: parsed.theme || getSystemTheme(),
           activeAnnouncementOverlay: null,
           toasts: [],
           floatingChanges: {},
@@ -217,7 +224,7 @@ const getInitialState = () => {
     announcements: SEED_ANNOUNCEMENTS,
     activities: SEED_ACTIVITIES,
     audioMuted: false,
-    theme: 'dark',
+    theme: getSystemTheme(),
     activeAnnouncementOverlay: null,
     toasts: [],
     floatingChanges: {},

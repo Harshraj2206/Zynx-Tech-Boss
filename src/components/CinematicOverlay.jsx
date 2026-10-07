@@ -43,19 +43,19 @@ export default function CinematicOverlay() {
           initial={{ scale: 0.88, y: 20, opacity: 0 }}
           animate={{ scale: 1, y: 0, opacity: 1 }}
           exit={{ scale: 0.92, y: 10, opacity: 0 }}
-          transition={{ type: 'spring', damping: 28, stiffness: 320 }}
-          className="relative max-w-xl w-full p-6 sm:p-8 rounded-[28px] bg-ios-secondary-bg/95 border border-ios-separator/50 shadow-ios-modal text-center"
+          transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+          className="relative max-w-xl w-full p-6 sm:p-8 rounded-[28px] glass text-center"
         >
           {/* Header Live Activity Pill */}
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-ios-fill mb-5 text-[12px] font-semibold">
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-ios-fill mb-5 text-[13px] font-semibold">
             {isEviction ? (
               <>
-                <AlertOctagon className="w-3.5 h-3.5 text-ios-red stroke-[2]" />
+                <AlertOctagon className="w-4 h-4 text-ios-red stroke-[2]" />
                 <span className="text-ios-red">House eviction directive</span>
               </>
             ) : (
               <>
-                <Radio className="w-3.5 h-3.5 text-ios-blue stroke-[2]" />
+                <Radio className="w-4 h-4 text-ios-blue stroke-[2]" />
                 <span className="text-ios-blue">Big Boss live transmission</span>
               </>
             )}
@@ -73,7 +73,7 @@ export default function CinematicOverlay() {
           </div>
 
           {/* Subtitle */}
-          <p className="text-[13px] font-medium text-ios-secondary-label mb-2">
+          <p className="text-[15px] font-medium text-ios-secondary-label mb-2">
             {overlayData.subtext || 'Attention Tech House'}
           </p>
 
@@ -94,9 +94,9 @@ export default function CinematicOverlay() {
           </div>
 
           {/* Dismiss bar & button */}
-          <div className="mt-6 pt-4 border-t border-ios-separator/60 flex flex-col items-center space-y-3">
+          <div className="mt-6 pt-4 border-t border-ios-separator/60 flex flex-col items-center space-y-4">
             {/* Auto dismiss progress bar */}
-            <div className="w-full bg-ios-fill h-1 rounded-full overflow-hidden">
+            <div className="w-full bg-ios-fill h-1.5 rounded-full overflow-hidden">
               <motion.div
                 initial={{ width: '100%' }}
                 animate={{ width: '0%' }}
@@ -109,14 +109,14 @@ export default function CinematicOverlay() {
               <span>Auto-dismiss in {countdown}s</span>
               <button
                 onClick={dismissOverlay}
-                className={`px-5 py-2 rounded-full font-semibold transition ios-pressable flex items-center space-x-1.5 ${
+                className={`h-11 px-6 rounded-full font-semibold text-[17px] transition ios-pressable flex items-center space-x-2 shadow-sm ${
                   isEviction
                     ? 'bg-ios-red text-white'
                     : 'bg-ios-blue text-white'
                 }`}
               >
-                <span>Acknowledge</span>
-                <X className="w-3.5 h-3.5" />
+                <span>Done</span>
+                <X className="w-4 h-4" />
               </button>
             </div>
           </div>

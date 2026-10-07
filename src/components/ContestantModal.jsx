@@ -57,7 +57,7 @@ export default function ContestantModal({ isOpen, onClose, contestantToEdit = nu
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/40 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg bg-ios-sheet-bg rounded-t-[32px] sm:rounded-[28px] p-6 shadow-ios-modal border border-ios-separator/40 animate-in slide-in-from-bottom duration-300">
+      <div className="relative w-full max-w-lg glass rounded-t-[32px] sm:rounded-[28px] p-6 shadow-ios-modal border border-ios-separator/40 animate-in slide-in-from-bottom duration-300">
         {/* iOS Grabber handle */}
         <div className="ios-grabber" />
 
@@ -70,15 +70,15 @@ export default function ContestantModal({ isOpen, onClose, contestantToEdit = nu
           <button
             type="button"
             onClick={onClose}
-            className="w-7 h-7 rounded-full bg-ios-fill flex items-center justify-center text-ios-secondary-label hover:text-ios-label ios-pressable"
+            className="w-8 h-8 rounded-full bg-ios-fill flex items-center justify-center text-ios-secondary-label hover:text-ios-label ios-pressable"
           >
             <X className="w-4 h-4 stroke-[2]" />
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="mt-4 space-y-4 text-[14px]">
+        <form onSubmit={handleSubmit} className="mt-4 space-y-4 text-[15px]">
           <div>
-            <label className="block text-[12px] font-medium text-ios-secondary-label mb-1">
+            <label className="block text-[13px] font-medium text-ios-secondary-label mb-1.5">
               Contestant name *
             </label>
             <input
@@ -87,19 +87,19 @@ export default function ContestantModal({ isOpen, onClose, contestantToEdit = nu
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. Linus Rustov"
-              className="w-full bg-ios-fill rounded-xl px-3.5 py-2.5 text-ios-label placeholder-ios-tertiary-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none"
+              className="w-full h-11 bg-ios-fill rounded-[12px] px-4 text-[17px] text-ios-label placeholder-ios-tertiary-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none"
             />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-[12px] font-medium text-ios-secondary-label mb-1">
+              <label className="block text-[13px] font-medium text-ios-secondary-label mb-1.5">
                 House team
               </label>
               <select
                 value={team}
                 onChange={(e) => setTeam(e.target.value)}
-                className="w-full bg-ios-fill rounded-xl px-3.5 py-2.5 text-ios-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none"
+                className="w-full h-11 bg-ios-fill rounded-[12px] px-3.5 text-[15px] font-medium text-ios-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none"
               >
                 {DEFAULT_TEAMS.map((t) => (
                   <option key={t} value={t}>
@@ -110,7 +110,7 @@ export default function ContestantModal({ isOpen, onClose, contestantToEdit = nu
             </div>
 
             <div>
-              <label className="block text-[12px] font-medium text-ios-secondary-label mb-1">
+              <label className="block text-[13px] font-medium text-ios-secondary-label mb-1.5">
                 Points (score)
               </label>
               <input
@@ -118,13 +118,13 @@ export default function ContestantModal({ isOpen, onClose, contestantToEdit = nu
                 min="0"
                 value={points}
                 onChange={(e) => setPointsInput(e.target.value)}
-                className="w-full bg-ios-fill rounded-xl px-3.5 py-2.5 text-ios-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none tabular-nums"
+                className="w-full h-11 bg-ios-fill rounded-[12px] px-4 text-[17px] text-ios-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none tabular-nums"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-[12px] font-medium text-ios-secondary-label mb-1">
+            <label className="block text-[13px] font-medium text-ios-secondary-label mb-1.5">
               Tech role / specialty
             </label>
             <input
@@ -132,12 +132,12 @@ export default function ContestantModal({ isOpen, onClose, contestantToEdit = nu
               value={role}
               onChange={(e) => setRole(e.target.value)}
               placeholder="e.g. Kernel Architect, Full Stack Ninja"
-              className="w-full bg-ios-fill rounded-xl px-3.5 py-2.5 text-ios-label placeholder-ios-tertiary-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none"
+              className="w-full h-11 bg-ios-fill rounded-[12px] px-4 text-[17px] text-ios-label placeholder-ios-tertiary-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none"
             />
           </div>
 
           <div>
-            <label className="block text-[12px] font-medium text-ios-secondary-label mb-1">
+            <label className="block text-[13px] font-medium text-ios-secondary-label mb-1.5">
               Catchphrase / bio
             </label>
             <textarea
@@ -145,7 +145,7 @@ export default function ContestantModal({ isOpen, onClose, contestantToEdit = nu
               value={bio}
               onChange={(e) => setBio(e.target.value)}
               placeholder="e.g. Compiles from memory, never breaks prod."
-              className="w-full bg-ios-fill rounded-xl px-3.5 py-2.5 text-ios-label placeholder-ios-tertiary-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none resize-none"
+              className="w-full bg-ios-fill rounded-[12px] px-4 py-3 text-[15px] text-ios-label placeholder-ios-tertiary-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none resize-none"
             />
           </div>
 
@@ -153,13 +153,13 @@ export default function ContestantModal({ isOpen, onClose, contestantToEdit = nu
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2.5 rounded-full text-ios-secondary-label hover:bg-ios-fill font-medium transition ios-pressable"
+              className="h-11 px-5 rounded-full text-ios-secondary-label hover:bg-ios-fill font-semibold text-[17px] transition ios-pressable flex items-center justify-center"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-5 py-2.5 rounded-full bg-ios-blue hover:opacity-90 text-white font-semibold transition ios-pressable shadow-sm"
+              className="h-11 px-6 rounded-full bg-ios-blue hover:opacity-90 text-white font-semibold text-[17px] transition ios-pressable shadow-sm flex items-center justify-center"
             >
               {contestantToEdit ? 'Save Changes' : 'Enroll Contestant'}
             </button>

@@ -32,10 +32,10 @@ export default function ContestantsGrid() {
       {/* iOS Large Title Header & Action Button */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-[28px] sm:text-[34px] font-bold tracking-tight text-ios-label">
+          <h1 className="text-[34px] font-bold tracking-[-0.022em] text-ios-label leading-[41px]">
             Contestants
           </h1>
-          <p className="text-[13px] text-ios-secondary-label font-medium mt-0.5">
+          <p className="text-[17px] leading-[22px] text-ios-secondary-label mt-0.5">
             Manage house roster, captaincy, and scores
           </p>
         </div>
@@ -46,22 +46,22 @@ export default function ContestantsGrid() {
             setContestantToEdit(null);
             setIsAddModalOpen(true);
           }}
-          className="px-4 py-2.5 rounded-full bg-ios-blue text-white font-semibold text-[14px] flex items-center justify-center space-x-1.5 transition ios-pressable shadow-sm self-start sm:self-auto"
+          className="min-h-[44px] px-5 rounded-[14px] bg-ios-blue text-white font-semibold text-[17px] flex items-center justify-center space-x-2 transition ios-pressable shadow-sm self-start sm:self-auto"
         >
           <UserPlus className="w-4 h-4 stroke-[2.5]" />
           <span>Enroll Contestant</span>
         </button>
       </div>
 
-      {/* Filter Segmented Control & Search Input */}
+      {/* Filter Segmented Control (32px high) & Search Input (44px high) */}
       <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
-        {/* iOS Team Filter Pills */}
-        <div className="inline-flex p-1 rounded-full bg-ios-fill/70 backdrop-blur-md overflow-x-auto scrollbar-none">
+        {/* iOS Team Filter Segmented Control */}
+        <div className="inline-flex h-8 p-0.5 rounded-full bg-ios-fill/70 backdrop-blur-md overflow-x-auto scrollbar-none items-center">
           {teams.map((team) => (
             <button
               key={team}
               onClick={() => setSelectedTeam(team)}
-              className={`px-3.5 py-1.5 rounded-full text-[13px] font-semibold whitespace-nowrap transition ${
+              className={`h-7 px-3.5 rounded-full text-[13px] font-semibold whitespace-nowrap transition flex items-center justify-center ${
                 selectedTeam === team
                   ? 'bg-ios-secondary-bg text-ios-label shadow-sm'
                   : 'text-ios-secondary-label hover:text-ios-label'
@@ -72,15 +72,15 @@ export default function ContestantsGrid() {
           ))}
         </div>
 
-        {/* Search Bar */}
-        <div className="relative min-w-[240px]">
-          <Search className="w-4 h-4 absolute left-3.5 top-3 text-ios-secondary-label stroke-[2]" />
+        {/* 44px High iOS Search Bar */}
+        <div className="relative min-w-[260px]">
+          <Search className="w-4 h-4 absolute left-3.5 top-3.5 text-ios-secondary-label stroke-[2]" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search contestant or role..."
-            className="w-full bg-ios-fill rounded-full pl-10 pr-4 py-2 text-[14px] text-ios-label placeholder-ios-tertiary-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none"
+            className="w-full h-11 bg-ios-fill rounded-xl pl-10 pr-4 text-[17px] text-ios-label placeholder-ios-tertiary-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none"
           />
         </div>
       </div>
@@ -101,8 +101,8 @@ export default function ContestantsGrid() {
       </div>
 
       {filteredContestants.length === 0 && (
-        <div className="p-12 text-center rounded-[20px] bg-ios-secondary-bg border border-ios-separator/50 text-ios-secondary-label">
-          <p className="text-[14px]">No contestants found matching your criteria.</p>
+        <div className="p-12 text-center glass-card text-ios-secondary-label">
+          <p className="text-[15px]">No contestants found matching your criteria.</p>
         </div>
       )}
 

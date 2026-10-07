@@ -30,8 +30,8 @@ export function DesktopSidebar({ activeTab, setActiveTab }) {
   const evictedCount = state.contestants.filter((c) => c.status === 'evicted').length;
 
   return (
-    <aside className="hidden lg:flex flex-col w-64 shrink-0 p-4 border-r border-ios-separator/50 ios-blur h-[calc(100vh-3.5rem)] sticky top-14 self-start overflow-y-auto">
-      <div className="px-3 py-2 text-[13px] font-medium text-ios-secondary-label">
+    <aside className="hidden min-[900px]:flex flex-col w-[260px] shrink-0 glass rounded-[28px] p-3 sticky top-[80px] self-start max-h-[calc(100vh-96px)] overflow-y-auto">
+      <div className="px-3.5 py-2 text-[13px] font-semibold text-ios-secondary-label">
         Menu
       </div>
 
@@ -49,7 +49,7 @@ export function DesktopSidebar({ activeTab, setActiveTab }) {
             <button
               key={item.id}
               onClick={() => setActiveTab(item.id)}
-              className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-[15px] font-medium transition ios-pressable ${
+              className={`w-full h-12 min-h-[48px] px-3.5 rounded-[14px] flex items-center justify-between text-[17px] font-medium transition ios-pressable ${
                 isActive
                   ? 'bg-ios-blue text-white shadow-sm font-semibold'
                   : 'text-ios-label hover:bg-ios-fill/50'
@@ -65,14 +65,14 @@ export function DesktopSidebar({ activeTab, setActiveTab }) {
                       : 'text-ios-blue'
                   }`}
                 />
-                <span>{item.label}</span>
+                <span className="leading-tight">{item.label}</span>
               </div>
 
               {badge !== null && (
                 <span
-                  className={`px-2 py-0.5 rounded-full text-[12px] font-semibold tabular-nums ${
+                  className={`min-w-[22px] h-[22px] px-2 rounded-full text-[13px] font-semibold tabular-nums flex items-center justify-center ${
                     isActive
-                      ? 'bg-white/20 text-white'
+                      ? 'bg-white/25 text-white'
                       : item.isDanger
                       ? 'bg-ios-red text-white'
                       : 'bg-ios-fill text-ios-secondary-label'
@@ -93,7 +93,7 @@ export function MobileTabBar({ activeTab, setActiveTab }) {
   const { nominatedCount } = useHouse();
   const [showMoreSheet, setShowMoreSheet] = useState(false);
 
-  // Primary 4 tabs + More
+  // Primary 4 tabs + More (5 tabs total)
   const primaryTabs = [
     { id: 'overview', label: 'Overview', icon: LayoutDashboard },
     { id: 'leaderboard', label: 'Ranks', icon: Trophy },
@@ -112,9 +112,9 @@ export function MobileTabBar({ activeTab, setActiveTab }) {
 
   return (
     <>
-      {/* iOS Bottom Tab Bar */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 border-t border-ios-separator/60 ios-blur px-2 py-1 safe-area-pb">
-        <div className="flex items-center justify-around h-12">
+      {/* iOS Floating Glass Bottom Tab Bar (Below 900px, 5 tabs, 24px icons, 10px labels) */}
+      <nav className="min-[900px]:hidden fixed bottom-3 left-3 right-3 z-40 max-w-[500px] mx-auto h-[58px] glass rounded-[28px] px-2 flex items-center justify-around shadow-2xl safe-area-pb">
+        <div className="flex items-center justify-around w-full h-full">
           {primaryTabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -127,15 +127,17 @@ export function MobileTabBar({ activeTab, setActiveTab }) {
                   isActive ? 'text-ios-blue font-semibold' : 'text-ios-secondary-label'
                 }`}
               >
-                <div className="relative">
-                  <Icon className="w-5 h-5 stroke-[1.75]" />
+                <div className="relative flex items-center justify-center">
+                  <Icon className="w-6 h-6 stroke-[1.75]" />
                   {tab.badge > 0 && (
-                    <span className="absolute -top-1 -right-2 px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-ios-red text-white">
+                    <span className="absolute -top-1 -right-2 px-1.5 min-w-[16px] h-4 rounded-full text-[10px] font-bold bg-ios-red text-white flex items-center justify-center tabular-nums">
                       {tab.badge}
                     </span>
                   )}
                 </div>
-                <span className="text-[10px] mt-0.5">{tab.label}</span>
+                <span className="text-[10px] mt-0.5 tracking-tight font-medium leading-none">
+                  {tab.label}
+                </span>
               </button>
             );
           })}
@@ -147,16 +149,20 @@ export function MobileTabBar({ activeTab, setActiveTab }) {
               isMoreActive ? 'text-ios-blue font-semibold' : 'text-ios-secondary-label'
             }`}
           >
-            <MoreHorizontal className="w-5 h-5 stroke-[1.75]" />
-            <span className="text-[10px] mt-0.5">More</span>
+            <div className="relative flex items-center justify-center">
+              <MoreHorizontal className="w-6 h-6 stroke-[1.75]" />
+            </div>
+            <span className="text-[10px] mt-0.5 tracking-tight font-medium leading-none">
+              More
+            </span>
           </button>
         </div>
       </nav>
 
-      {/* iOS "More" Bottom Sheet */}
+      {/* iOS "More" Bottom Sheet (Radius 28px top, grabber, spring slide-up) */}
       {showMoreSheet && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="w-full max-w-lg bg-ios-sheet-bg rounded-t-[32px] border-t border-ios-separator/40 p-5 shadow-ios-sheet animate-in slide-in-from-bottom duration-300">
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 backdrop-blur-md animate-in fade-in duration-200">
+          <div className="w-full max-w-lg glass rounded-t-[28px] border-t border-ios-separator/40 p-5 shadow-2xl animate-in slide-in-from-bottom duration-300">
             {/* Grabber handle */}
             <div className="ios-grabber" />
 
@@ -166,7 +172,7 @@ export function MobileTabBar({ activeTab, setActiveTab }) {
               </h3>
               <button
                 onClick={() => setShowMoreSheet(false)}
-                className="w-7 h-7 rounded-full bg-ios-fill flex items-center justify-center text-ios-secondary-label"
+                className="w-8 h-8 rounded-full bg-ios-fill flex items-center justify-center text-ios-secondary-label hover:text-ios-label ios-pressable"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -184,7 +190,7 @@ export function MobileTabBar({ activeTab, setActiveTab }) {
                       setActiveTab(tab.id);
                       setShowMoreSheet(false);
                     }}
-                    className={`w-full flex items-center space-x-3.5 px-4 py-3 rounded-2xl text-[16px] transition ios-pressable ${
+                    className={`w-full min-h-[44px] flex items-center space-x-3.5 px-4 py-3 rounded-2xl text-[17px] transition ios-pressable ${
                       isActive
                         ? 'bg-ios-blue text-white font-semibold'
                         : 'text-ios-label hover:bg-ios-fill/50'

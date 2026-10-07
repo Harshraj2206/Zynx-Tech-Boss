@@ -136,7 +136,7 @@ export default function TaskTimer({ className = '' }) {
 
   return (
     <div
-      className={`rounded-[24px] bg-ios-secondary-bg border border-ios-separator/50 p-6 shadow-ios-card overflow-hidden min-w-0 max-w-full flex flex-col justify-between ${className}`}
+      className={`glass-card p-6 overflow-hidden min-w-0 max-w-full flex flex-col justify-between ${className}`}
     >
       {/* 1. Title Row */}
       <div className="flex items-center justify-between pb-3 border-b border-ios-separator/50 w-full min-w-0">
@@ -191,7 +191,7 @@ export default function TaskTimer({ className = '' }) {
             >
               {displayMinutes}:{displaySeconds}
             </span>
-            <span className="text-[12px] font-medium text-ios-secondary-label mt-0.5">
+            <span className="text-[13px] font-medium text-ios-secondary-label mt-0.5">
               {statusText}
             </span>
           </div>
@@ -204,7 +204,7 @@ export default function TaskTimer({ className = '' }) {
           <button
             type="button"
             onClick={handleStart}
-            className="w-16 h-16 rounded-full bg-ios-green/20 text-ios-green font-semibold text-[15px] flex items-center justify-center ios-pressable hover:bg-ios-green/30 shadow-sm shrink-0"
+            className="w-16 h-16 rounded-full bg-ios-green/20 text-ios-green font-semibold text-[17px] flex items-center justify-center ios-pressable hover:bg-ios-green/30 shadow-sm shrink-0"
           >
             Start
           </button>
@@ -212,7 +212,7 @@ export default function TaskTimer({ className = '' }) {
           <button
             type="button"
             onClick={handlePause}
-            className="w-16 h-16 rounded-full bg-ios-orange/20 text-ios-orange font-semibold text-[15px] flex items-center justify-center ios-pressable hover:bg-ios-orange/30 shadow-sm shrink-0"
+            className="w-16 h-16 rounded-full bg-ios-orange/20 text-ios-orange font-semibold text-[17px] flex items-center justify-center ios-pressable hover:bg-ios-orange/30 shadow-sm shrink-0"
           >
             Pause
           </button>
@@ -221,7 +221,7 @@ export default function TaskTimer({ className = '' }) {
         <button
           type="button"
           onClick={handleReset}
-          className="w-16 h-16 rounded-full bg-ios-fill text-ios-label font-semibold text-[15px] flex items-center justify-center ios-pressable hover:bg-ios-fill/80 shadow-sm shrink-0"
+          className="w-16 h-16 rounded-full bg-ios-fill text-ios-label font-semibold text-[17px] flex items-center justify-center ios-pressable hover:bg-ios-fill/80 shadow-sm shrink-0"
         >
           Reset
         </button>
@@ -239,7 +239,7 @@ export default function TaskTimer({ className = '' }) {
                 onClick={() => setPreset(p)}
                 className={`py-1.5 rounded-full text-[13px] font-semibold transition text-center ios-pressable truncate ${
                   isSelected
-                    ? 'bg-ios-secondary-bg text-ios-label shadow-sm'
+                    ? 'bg-ios-elevated-bg text-ios-label shadow-sm'
                     : 'text-ios-secondary-label hover:text-ios-label'
                 }`}
               >
@@ -266,7 +266,7 @@ export default function TaskTimer({ className = '' }) {
             value={inputMinutes}
             onChange={(e) => setInputMinutes(e.target.value)}
             placeholder="00"
-            className="w-14 max-w-[80px] bg-ios-fill rounded-xl py-1.5 text-center text-ios-label focus:outline-none focus:ring-2 focus:ring-ios-blue text-[13px] font-sans tabular-nums border-none"
+            className="w-14 max-w-[80px] h-9 bg-ios-fill rounded-xl py-1.5 text-center text-ios-label focus:outline-none focus:ring-2 focus:ring-ios-blue text-[13px] font-sans tabular-nums border-none"
           />
           <span className="text-ios-secondary-label font-semibold">:</span>
           <input
@@ -276,12 +276,12 @@ export default function TaskTimer({ className = '' }) {
             value={inputSeconds}
             onChange={(e) => setInputSeconds(e.target.value)}
             placeholder="00"
-            className="w-14 max-w-[80px] bg-ios-fill rounded-xl py-1.5 text-center text-ios-label focus:outline-none focus:ring-2 focus:ring-ios-blue text-[13px] font-sans tabular-nums border-none"
+            className="w-14 max-w-[80px] h-9 bg-ios-fill rounded-xl py-1.5 text-center text-ios-label focus:outline-none focus:ring-2 focus:ring-ios-blue text-[13px] font-sans tabular-nums border-none"
           />
         </div>
         <button
           type="submit"
-          className="px-4 py-1.5 rounded-full bg-ios-blue text-white text-[13px] font-semibold ios-pressable shadow-sm shrink-0"
+          className="h-9 px-4 rounded-full bg-ios-blue text-white text-[13px] font-semibold ios-pressable shadow-sm shrink-0"
         >
           Set
         </button>

@@ -42,10 +42,10 @@ export default function HouseStatistics() {
     <div className="space-y-6">
       {/* Section Header */}
       <div>
-        <h2 className="text-[20px] sm:text-[22px] font-semibold text-ios-label tracking-tight">
+        <h2 className="text-[22px] font-semibold text-ios-label tracking-tight">
           Overview
         </h2>
-        <p className="text-[13px] text-ios-secondary-label font-medium mt-0.5">
+        <p className="text-[15px] text-ios-secondary-label mt-0.5">
           Live scores and team breakdown
         </p>
       </div>
@@ -53,7 +53,7 @@ export default function HouseStatistics() {
       {/* Grid of Key Stat Metric Cards (Consistent 20px padding, equal height, sentence-case labels) */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
         {/* Total Contestants */}
-        <div className="rounded-[20px] bg-ios-secondary-bg border border-ios-separator/50 p-5 shadow-ios-card flex flex-col justify-between h-full min-w-0">
+        <div className="glass-card p-5 flex flex-col justify-between h-full min-w-0">
           <div className="flex items-center justify-between text-ios-secondary-label mb-2">
             <span className="text-[13px] font-medium text-ios-secondary-label">Total</span>
             <Users className="w-4 h-4 text-ios-secondary-label" />
@@ -61,11 +61,11 @@ export default function HouseStatistics() {
           <div className="text-[30px] font-semibold text-ios-label tabular-nums leading-none my-1">
             <CountUp to={totalContestants} duration={0.8} />
           </div>
-          <span className="text-[12px] text-ios-secondary-label">Registered</span>
+          <span className="text-[13px] text-ios-secondary-label">Registered</span>
         </div>
 
         {/* Active In House */}
-        <div className="rounded-[20px] bg-ios-secondary-bg border border-ios-separator/50 p-5 shadow-ios-card flex flex-col justify-between h-full min-w-0">
+        <div className="glass-card p-5 flex flex-col justify-between h-full min-w-0">
           <div className="flex items-center justify-between text-ios-secondary-label mb-2">
             <span className="text-[13px] font-medium text-ios-secondary-label">Active</span>
             <UserCheck className="w-4 h-4 text-ios-secondary-label" />
@@ -73,11 +73,11 @@ export default function HouseStatistics() {
           <div className="text-[30px] font-semibold text-ios-label tabular-nums leading-none my-1">
             <CountUp to={activeCount} duration={0.8} />
           </div>
-          <span className="text-[12px] text-ios-secondary-label">In house</span>
+          <span className="text-[13px] text-ios-secondary-label">In house</span>
         </div>
 
         {/* Highest Scorer */}
-        <div className="rounded-[20px] bg-ios-secondary-bg border border-ios-separator/50 p-5 shadow-ios-card flex flex-col justify-between h-full min-w-0">
+        <div className="glass-card p-5 flex flex-col justify-between h-full min-w-0">
           <div className="flex items-center justify-between text-ios-secondary-label mb-2">
             <span className="text-[13px] font-medium text-ios-secondary-label">Top leader</span>
             <TrendingUp className="w-4 h-4 text-ios-secondary-label" />
@@ -85,13 +85,13 @@ export default function HouseStatistics() {
           <div className="text-[18px] sm:text-[20px] font-semibold text-ios-label truncate my-1">
             {highestScorer ? highestScorer.name : 'N/A'}
           </div>
-          <span className="text-[12px] text-ios-secondary-label tabular-nums">
+          <span className="text-[13px] text-ios-secondary-label tabular-nums">
             {highestScorer ? `${highestScorer.points.toLocaleString()} pts` : '0 pts'}
           </span>
         </div>
 
         {/* Lowest Scorer */}
-        <div className="rounded-[20px] bg-ios-secondary-bg border border-ios-separator/50 p-5 shadow-ios-card flex flex-col justify-between h-full min-w-0">
+        <div className="glass-card p-5 flex flex-col justify-between h-full min-w-0">
           <div className="flex items-center justify-between text-ios-secondary-label mb-2">
             <span className="text-[13px] font-medium text-ios-secondary-label">Lowest</span>
             <TrendingDown className="w-4 h-4 text-ios-secondary-label" />
@@ -99,13 +99,13 @@ export default function HouseStatistics() {
           <div className="text-[18px] sm:text-[20px] font-semibold text-ios-label truncate my-1">
             {lowestScorer ? lowestScorer.name : 'N/A'}
           </div>
-          <span className="text-[12px] text-ios-secondary-label tabular-nums">
+          <span className="text-[13px] text-ios-secondary-label tabular-nums">
             {lowestScorer ? `${lowestScorer.points.toLocaleString()} pts` : '0 pts'}
           </span>
         </div>
 
-        {/* Average Points (Primary label colour, NOT purple) */}
-        <div className="rounded-[20px] bg-ios-secondary-bg border border-ios-separator/50 p-5 shadow-ios-card flex flex-col justify-between h-full min-w-0">
+        {/* Average Points */}
+        <div className="glass-card p-5 flex flex-col justify-between h-full min-w-0">
           <div className="flex items-center justify-between text-ios-secondary-label mb-2">
             <span className="text-[13px] font-medium text-ios-secondary-label">Average</span>
             <Award className="w-4 h-4 text-ios-secondary-label" />
@@ -113,11 +113,11 @@ export default function HouseStatistics() {
           <div className="text-[30px] font-semibold text-ios-label tabular-nums leading-none my-1">
             <CountUp to={Number(avgPoints)} decimals={1} duration={0.8} />
           </div>
-          <span className="text-[12px] text-ios-secondary-label">pts / person</span>
+          <span className="text-[13px] text-ios-secondary-label">pts / person</span>
         </div>
 
         {/* Current Captain (Orange icon) */}
-        <div className="rounded-[20px] bg-ios-secondary-bg border border-ios-separator/50 p-5 shadow-ios-card flex flex-col justify-between h-full min-w-0">
+        <div className="glass-card p-5 flex flex-col justify-between h-full min-w-0">
           <div className="flex items-center justify-between text-ios-secondary-label mb-2">
             <span className="text-[13px] font-medium text-ios-secondary-label">Captain</span>
             <Crown className="w-4 h-4 text-ios-orange" />
@@ -125,11 +125,11 @@ export default function HouseStatistics() {
           <div className="text-[18px] sm:text-[20px] font-semibold text-ios-label truncate my-1">
             {currentCaptain ? currentCaptain.name : 'Vacant'}
           </div>
-          <span className="text-[12px] text-ios-orange font-medium">House lead</span>
+          <span className="text-[13px] text-ios-orange font-medium">House lead</span>
         </div>
 
         {/* In Danger / Nominated (Red icon) */}
-        <div className="rounded-[20px] bg-ios-secondary-bg border border-ios-separator/50 p-5 shadow-ios-card flex flex-col justify-between h-full min-w-0">
+        <div className="glass-card p-5 flex flex-col justify-between h-full min-w-0">
           <div className="flex items-center justify-between text-ios-secondary-label mb-2">
             <span className="text-[13px] font-medium text-ios-secondary-label">Nominated</span>
             <ShieldAlert className="w-4 h-4 text-ios-red" />
@@ -137,11 +137,11 @@ export default function HouseStatistics() {
           <div className="text-[30px] font-semibold text-ios-label tabular-nums leading-none my-1">
             <CountUp to={nominatedCount} duration={0.8} />
           </div>
-          <span className="text-[12px] text-ios-secondary-label">At risk</span>
+          <span className="text-[13px] text-ios-secondary-label">At risk</span>
         </div>
 
         {/* Immune Count (Green icon) */}
-        <div className="rounded-[20px] bg-ios-secondary-bg border border-ios-separator/50 p-5 shadow-ios-card flex flex-col justify-between h-full min-w-0">
+        <div className="glass-card p-5 flex flex-col justify-between h-full min-w-0">
           <div className="flex items-center justify-between text-ios-secondary-label mb-2">
             <span className="text-[13px] font-medium text-ios-secondary-label">Immune</span>
             <ShieldCheck className="w-4 h-4 text-ios-green" />
@@ -149,11 +149,11 @@ export default function HouseStatistics() {
           <div className="text-[30px] font-semibold text-ios-label tabular-nums leading-none my-1">
             <CountUp to={immuneCount} duration={0.8} />
           </div>
-          <span className="text-[12px] text-ios-secondary-label">Protected</span>
+          <span className="text-[13px] text-ios-secondary-label">Protected</span>
         </div>
 
         {/* Tasks Ratio */}
-        <div className="rounded-[20px] bg-ios-secondary-bg border border-ios-separator/50 p-5 shadow-ios-card flex flex-col justify-between h-full min-w-0">
+        <div className="glass-card p-5 flex flex-col justify-between h-full min-w-0">
           <div className="flex items-center justify-between text-ios-secondary-label mb-2">
             <span className="text-[13px] font-medium text-ios-secondary-label">Tasks</span>
             <CheckSquare className="w-4 h-4 text-ios-secondary-label" />
@@ -161,11 +161,11 @@ export default function HouseStatistics() {
           <div className="text-[28px] font-semibold text-ios-label tabular-nums leading-none my-1">
             {completedTasks} / {completedTasks + pendingTasks}
           </div>
-          <span className="text-[12px] text-ios-secondary-label">Done / total</span>
+          <span className="text-[13px] text-ios-secondary-label">Done / total</span>
         </div>
 
         {/* Evicted Count */}
-        <div className="rounded-[20px] bg-ios-secondary-bg border border-ios-separator/50 p-5 shadow-ios-card flex flex-col justify-between h-full min-w-0">
+        <div className="glass-card p-5 flex flex-col justify-between h-full min-w-0">
           <div className="flex items-center justify-between text-ios-secondary-label mb-2">
             <span className="text-[13px] font-medium text-ios-secondary-label">Evicted</span>
             <Skull className="w-4 h-4 text-ios-secondary-label" />
@@ -173,22 +173,22 @@ export default function HouseStatistics() {
           <div className="text-[30px] font-semibold text-ios-label tabular-nums leading-none my-1">
             <CountUp to={evictedCount} duration={0.8} />
           </div>
-          <span className="text-[12px] text-ios-secondary-label">Eliminated</span>
+          <span className="text-[13px] text-ios-secondary-label">Eliminated</span>
         </div>
       </div>
 
-      {/* Team Points Single Accent Bar Chart (#0A84FF on #2C2C2E track, 8px high) */}
-      <div className="rounded-[24px] bg-ios-secondary-bg border border-ios-separator/50 p-5 sm:p-6 shadow-ios-card min-w-0">
-        <div className="flex items-center justify-between mb-4 pb-3 border-b border-ios-separator/50">
+      {/* Team Points Single Accent Bar Chart (iOS blue on fill track, 8px high) */}
+      <div className="glass-card p-5 sm:p-6 min-w-0">
+        <div className="flex items-center justify-between mb-4 pb-3 border-b border-ios-separator/60">
           <div>
-            <h3 className="font-semibold text-[15px] text-ios-label">
+            <h3 className="font-semibold text-[17px] text-ios-label">
               Team Score Distribution
             </h3>
-            <p className="text-[12px] text-ios-secondary-label">
+            <p className="text-[13px] text-ios-secondary-label">
               Cumulative points across active members
             </p>
           </div>
-          <span className="text-[13px] font-semibold text-ios-blue tabular-nums">
+          <span className="text-[15px] font-semibold text-ios-blue tabular-nums">
             {totalActivePoints.toLocaleString()} total points
           </span>
         </div>
@@ -203,31 +203,30 @@ export default function HouseStatistics() {
             const isLeader = percentage === 100;
 
             return (
-              <div key={teamName} className="space-y-1.5 text-[13px]">
+              <div key={teamName} className="space-y-1.5 text-[15px]">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2 min-w-0 truncate">
                     <span className="font-medium text-ios-label truncate">{teamName}</span>
-                    <span className="text-[12px] text-ios-secondary-label shrink-0">
+                    <span className="text-[13px] text-ios-secondary-label shrink-0">
                       ({teamMemberCount} members)
                     </span>
                   </div>
-                  <div className="flex items-center space-x-2 text-[13px] shrink-0 ml-2">
+                  <div className="flex items-center space-x-2 text-[15px] shrink-0 ml-2">
                     <span className="font-semibold text-ios-label tabular-nums">
                       {teamPoints.toLocaleString()} pts
                     </span>
-                    <span className="text-ios-secondary-label tabular-nums">
+                    <span className="text-ios-secondary-label text-[13px] tabular-nums">
                       ({percentage}%)
                     </span>
                   </div>
                 </div>
 
-                {/* 8px high on #2C2C2E track, leader solid at 100%, others reduced opacity */}
-                <div className="w-full bg-[#2C2C2E] h-2 rounded-full overflow-hidden">
+                {/* 8px high on fill track, iOS blue, leader solid, others lower opacity */}
+                <div className="w-full bg-ios-fill h-2 rounded-full overflow-hidden">
                   <div
-                    className="h-full rounded-full transition-all duration-700 ease-out"
+                    className="h-full rounded-full transition-all duration-700 ease-out bg-ios-blue"
                     style={{
                       width: `${Math.max(percentage, 4)}%`,
-                      backgroundColor: '#0A84FF',
                       opacity: isLeader ? 1 : Math.max(0.35, percentage / 100),
                     }}
                   />

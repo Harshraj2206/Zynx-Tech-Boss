@@ -16,10 +16,10 @@ export default function EvictionModal({ isOpen, onClose, contestant }) {
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-in fade-in duration-200">
       <div className="w-full max-w-sm space-y-2">
         {/* iOS Action Sheet Panel */}
-        <div className="bg-ios-sheet-bg/95 backdrop-blur-xl rounded-[22px] overflow-hidden border border-ios-separator/40 text-center shadow-ios-modal">
+        <div className="glass rounded-[22px] overflow-hidden text-center shadow-ios-modal">
           <div className="p-5 border-b border-ios-separator/60">
-            <div className="mx-auto w-10 h-10 rounded-full bg-ios-red/15 text-ios-red flex items-center justify-center mb-2.5">
-              <Skull className="w-5 h-5 stroke-[2]" />
+            <div className="mx-auto w-11 h-11 rounded-full bg-ios-red/15 text-ios-red flex items-center justify-center mb-3">
+              <Skull className="w-6 h-6 stroke-[2]" />
             </div>
 
             <h3 className="text-[17px] font-semibold text-ios-label">
@@ -35,7 +35,7 @@ export default function EvictionModal({ isOpen, onClose, contestant }) {
           <button
             type="button"
             onClick={handleConfirm}
-            className="w-full py-3.5 text-[17px] font-semibold text-ios-red hover:bg-ios-fill/50 ios-pressable transition"
+            className="w-full h-12 text-[17px] font-semibold text-ios-red hover:bg-ios-fill/50 ios-pressable transition flex items-center justify-center"
           >
             Evict Contestant
           </button>
@@ -45,7 +45,7 @@ export default function EvictionModal({ isOpen, onClose, contestant }) {
         <button
           type="button"
           onClick={onClose}
-          className="w-full py-3.5 bg-ios-sheet-bg/95 backdrop-blur-xl rounded-[22px] text-[17px] font-semibold text-ios-blue border border-ios-separator/40 hover:bg-ios-fill/50 ios-pressable transition shadow-sm"
+          className="w-full h-12 glass rounded-[22px] text-[17px] font-semibold text-ios-blue hover:bg-ios-fill/50 ios-pressable transition shadow-sm flex items-center justify-center"
         >
           Cancel
         </button>

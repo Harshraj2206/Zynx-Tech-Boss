@@ -14,14 +14,6 @@ export default function ToastContainer() {
           const isSuccess = toast.type === 'success';
           const isWarning = toast.type === 'warning';
 
-          const accentColor = isError
-            ? 'text-ios-red'
-            : isSuccess
-            ? 'text-ios-green'
-            : isWarning
-            ? 'text-ios-orange'
-            : 'text-ios-blue';
-
           const iconBg = isError
             ? 'bg-ios-red'
             : isSuccess
@@ -38,33 +30,33 @@ export default function ToastContainer() {
               exit={{ opacity: 0, y: -16, scale: 0.94 }}
               transition={{
                 type: 'spring',
-                stiffness: 350,
+                stiffness: 300,
                 damping: 30,
               }}
-              className="pointer-events-auto w-full max-w-md bg-ios-secondary-bg/90 ios-blur rounded-[20px] p-3 shadow-ios-modal border border-ios-separator/50 flex items-center space-x-3"
+              className="pointer-events-auto w-full max-w-md glass rounded-[22px] p-3.5 flex items-center space-x-3.5"
             >
               {/* App Icon Glyph */}
-              <div className={`w-8 h-8 rounded-full ${iconBg} flex items-center justify-center text-white shrink-0 shadow-sm`}>
+              <div className={`w-9 h-9 rounded-full ${iconBg} flex items-center justify-center text-white shrink-0 shadow-sm`}>
                 {isError ? (
-                  <AlertCircle className="w-4 h-4 stroke-[2]" />
+                  <AlertCircle className="w-5 h-5 stroke-[2]" />
                 ) : isSuccess ? (
-                  <Check className="w-4 h-4 stroke-[2.5]" />
+                  <Check className="w-5 h-5 stroke-[2.5]" />
                 ) : isWarning ? (
-                  <AlertTriangle className="w-4 h-4 stroke-[2]" />
+                  <AlertTriangle className="w-5 h-5 stroke-[2]" />
                 ) : (
-                  <Eye className="w-4 h-4 stroke-[2]" />
+                  <Eye className="w-5 h-5 stroke-[2]" />
                 )}
               </div>
 
               {/* Notification Message */}
               <div className="flex-1 min-w-0">
-                <div className="flex items-center space-x-1.5">
-                  <span className="text-[12px] font-semibold text-ios-secondary-label">
+                <div className="flex items-center space-x-2">
+                  <span className="text-[17px] font-semibold text-ios-label leading-tight">
                     Big Boss
                   </span>
-                  <span className="text-[11px] text-ios-tertiary-label">• now</span>
+                  <span className="text-[13px] text-ios-secondary-label">• now</span>
                 </div>
-                <p className="text-[14px] font-medium text-ios-label leading-tight mt-0.5 truncate">
+                <p className="text-[15px] text-ios-secondary-label leading-tight mt-0.5 truncate">
                   {toast.message}
                 </p>
               </div>
@@ -73,9 +65,9 @@ export default function ToastContainer() {
               <button
                 type="button"
                 onClick={() => removeToast(toast.id)}
-                className="w-6 h-6 rounded-full flex items-center justify-center text-ios-secondary-label hover:text-ios-label ios-pressable"
+                className="w-8 h-8 rounded-full flex items-center justify-center text-ios-secondary-label hover:text-ios-label ios-pressable shrink-0"
               >
-                <X className="w-3.5 h-3.5" />
+                <X className="w-4 h-4" />
               </button>
             </motion.div>
           );

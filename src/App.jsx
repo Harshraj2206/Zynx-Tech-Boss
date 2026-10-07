@@ -19,19 +19,19 @@ function MainApp() {
 
   return (
     <div className="min-h-screen bg-ios-bg text-ios-label flex flex-col relative selection:bg-ios-blue/20 selection:text-ios-blue">
-      {/* Apple Subtle Ambient Background */}
+      {/* Apple Liquid Glass Ambient Wallpaper Layer */}
       <ParticlesBackground />
 
-      {/* Persistent iOS Navigation Bar */}
+      {/* Persistent Floating iOS Top Navigation Bar */}
       <Header activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      {/* Main Layout: iPadOS-style Sidebar on Desktop + Content Area */}
-      <div className="flex-1 max-w-7xl w-full mx-auto flex pb-20 lg:pb-8 relative z-10">
-        {/* Desktop iPadOS Sidebar */}
+      {/* Main Layout: Max 1200px centred, page padding 24px desktop / 16px mobile, sidebar >=900px */}
+      <div className="flex-1 max-w-[1200px] w-full mx-auto flex gap-6 px-4 md:px-6 pb-28 min-[900px]:pb-8 relative z-10 pt-3">
+        {/* Desktop Floating Glass Sidebar (>=900px) */}
         <DesktopSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
 
         {/* Primary Viewport */}
-        <main className="flex-1 px-4 sm:px-6 lg:px-8 py-6 w-full min-w-0">
+        <main className="flex-1 min-w-0">
           {activeTab === 'overview' && (
             <OverviewDashboard onNavigate={setActiveTab} />
           )}
@@ -45,7 +45,7 @@ function MainApp() {
         </main>
       </div>
 
-      {/* iOS Mobile Bottom Tab Bar */}
+      {/* iOS Floating Glass Bottom Tab Bar (<900px) */}
       <MobileTabBar activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Apple Live Activity / Announcement Overlay */}

@@ -52,26 +52,26 @@ export default function AnnouncementsPanel() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-[28px] sm:text-[34px] font-bold tracking-tight text-ios-label">
+        <h1 className="text-[34px] font-bold tracking-tight text-ios-label" style={{ letterSpacing: '-0.022em' }}>
           Announcements
         </h1>
-        <p className="text-[13px] text-ios-secondary-label font-medium mt-0.5">
+        <p className="text-[17px] text-ios-secondary-label mt-1">
           Broadcast live commands to the Tech House
         </p>
       </div>
 
       {/* Broadcast Card */}
-      <div className="rounded-[24px] bg-ios-secondary-bg border border-ios-separator/50 p-5 sm:p-6 shadow-ios-card">
+      <div className="glass-card p-5 sm:p-6">
         <div className="flex items-center space-x-2 pb-3 mb-4 border-b border-ios-separator/50">
-          <Bell className="w-4 h-4 text-ios-blue stroke-[2]" />
-          <h3 className="font-semibold text-[15px] text-ios-label">
+          <Bell className="w-5 h-5 text-ios-blue stroke-[2]" />
+          <h3 className="font-semibold text-[17px] text-ios-label">
             Transmit House Directive
           </h3>
         </div>
 
         {/* Quick Presets */}
-        <div className="mb-4">
-          <p className="text-[13px] font-medium text-ios-secondary-label mb-2">
+        <div className="mb-5">
+          <p className="text-[13px] font-medium text-ios-secondary-label mb-2.5">
             Quick presets
           </p>
           <div className="flex flex-wrap gap-2">
@@ -80,7 +80,7 @@ export default function AnnouncementsPanel() {
                 key={idx}
                 type="button"
                 onClick={() => handleSelectPreset(p)}
-                className="px-3.5 py-1.5 rounded-full bg-ios-fill hover:bg-ios-blue hover:text-white text-ios-label text-[13px] font-medium transition ios-pressable shadow-sm"
+                className="h-9 px-4 rounded-full bg-ios-fill hover:bg-ios-blue hover:text-white text-ios-label text-[13px] font-medium transition ios-pressable shadow-sm flex items-center justify-center shrink-0"
               >
                 {p.label}
               </button>
@@ -90,20 +90,20 @@ export default function AnnouncementsPanel() {
 
         {/* Custom Broadcast Form */}
         <form onSubmit={handleBroadcast} className="space-y-3">
-          <div className="flex flex-wrap sm:flex-nowrap gap-2">
+          <div className="flex flex-wrap sm:flex-nowrap gap-2.5">
             <input
               type="text"
               required
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Type message to broadcast to all housemates..."
-              className="flex-1 min-w-[200px] bg-ios-fill rounded-xl px-4 py-2.5 text-[14px] text-ios-label placeholder-ios-tertiary-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none"
+              className="flex-1 min-w-[220px] h-11 bg-ios-fill rounded-[12px] px-4 text-[17px] text-ios-label placeholder-ios-tertiary-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none"
             />
 
             <select
               value={announcementType}
               onChange={(e) => setAnnouncementType(e.target.value)}
-              className="bg-ios-fill rounded-xl px-3 py-2.5 text-[13px] text-ios-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none shrink-0"
+              className="h-11 bg-ios-fill rounded-[12px] px-4 text-[15px] font-medium text-ios-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none shrink-0"
             >
               <option value="general">General</option>
               <option value="task">Task Challenge</option>
@@ -113,7 +113,7 @@ export default function AnnouncementsPanel() {
 
             <button
               type="submit"
-              className="px-5 py-2.5 rounded-full bg-ios-blue hover:opacity-90 text-white font-semibold text-[14px] flex items-center justify-center space-x-1.5 transition ios-pressable shadow-sm shrink-0"
+              className="h-11 px-6 rounded-full bg-ios-blue hover:opacity-90 text-white font-semibold text-[17px] flex items-center justify-center space-x-2 transition ios-pressable shadow-sm shrink-0"
             >
               <Send className="w-4 h-4 stroke-[2]" />
               <span>Broadcast</span>
@@ -126,12 +126,12 @@ export default function AnnouncementsPanel() {
       <div className="space-y-3">
         <div className="flex items-center space-x-2 px-1">
           <History className="w-4 h-4 text-ios-secondary-label stroke-[2]" />
-          <h3 className="text-[13px] font-medium text-ios-secondary-label">
+          <h3 className="text-[15px] font-medium text-ios-secondary-label">
             Announcement log ({state.announcements.length})
           </h3>
         </div>
 
-        <div className="bg-ios-secondary-bg rounded-[20px] border border-ios-separator/50 overflow-hidden shadow-ios-card divide-y divide-ios-separator/50">
+        <div className="glass-card p-0 overflow-hidden divide-y divide-ios-separator/50">
           <AnimatedList className="w-full">
             {state.announcements.map((ann) => {
               const isEviction = ann.type === 'eviction';
@@ -142,10 +142,10 @@ export default function AnnouncementsPanel() {
                   key={ann.id}
                   className="p-4 flex items-start justify-between gap-3 hover:bg-ios-fill/20 transition-colors"
                 >
-                  <div className="space-y-1">
+                  <div className="space-y-1.5">
                     <div className="flex items-center space-x-2">
                       <span
-                        className={`px-2 py-0.5 rounded-full text-[10px] font-semibold ${
+                        className={`px-2.5 py-0.5 rounded-full text-[13px] font-semibold ${
                           isEviction
                             ? 'bg-ios-red/15 text-ios-red'
                             : isNomination
@@ -155,14 +155,14 @@ export default function AnnouncementsPanel() {
                       >
                         {ann.type}
                       </span>
-                      <span className="text-[12px] text-ios-secondary-label tabular-nums">
+                      <span className="text-[13px] text-ios-secondary-label tabular-nums">
                         {new Date(ann.timestamp).toLocaleTimeString([], {
                           hour: 'numeric',
                           minute: '2-digit',
                         })}
                       </span>
                     </div>
-                    <p className="text-[14px] text-ios-label leading-snug pt-0.5">
+                    <p className="text-[15px] sm:text-[17px] text-ios-label leading-snug pt-0.5">
                       {ann.message}
                     </p>
                   </div>
@@ -170,7 +170,7 @@ export default function AnnouncementsPanel() {
                   <button
                     type="button"
                     onClick={() => broadcastAnnouncement(ann.message, ann.type)}
-                    className="shrink-0 px-3 py-1 rounded-full text-[12px] font-medium bg-ios-fill text-ios-secondary-label hover:text-ios-blue transition ios-pressable"
+                    className="shrink-0 h-9 px-3.5 rounded-full text-[13px] font-semibold bg-ios-fill text-ios-secondary-label hover:text-ios-blue transition ios-pressable flex items-center justify-center"
                   >
                     Replay
                   </button>

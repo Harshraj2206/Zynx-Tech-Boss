@@ -61,10 +61,10 @@ export default function TaskManagement() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-[28px] sm:text-[34px] font-bold tracking-tight text-ios-label">
+          <h1 className="text-[34px] font-bold tracking-[-0.022em] text-ios-label leading-[41px]">
             Tasks & Timer
           </h1>
-          <p className="text-[13px] text-ios-secondary-label font-medium mt-0.5">
+          <p className="text-[17px] leading-[22px] text-ios-secondary-label mt-0.5">
             Dispatch challenges and monitor active task timers
           </p>
         </div>
@@ -72,7 +72,7 @@ export default function TaskManagement() {
         <button
           type="button"
           onClick={() => setShowCreateModal(true)}
-          className="px-4 py-2.5 rounded-full bg-ios-blue text-white font-semibold text-[14px] flex items-center justify-center space-x-1.5 transition ios-pressable shadow-sm self-start sm:self-auto"
+          className="min-h-[44px] px-5 rounded-[14px] bg-ios-blue text-white font-semibold text-[17px] flex items-center justify-center space-x-2 transition ios-pressable shadow-sm self-start sm:self-auto"
         >
           <Plus className="w-4 h-4 stroke-[2.5]" />
           <span>New Task</span>
@@ -82,12 +82,12 @@ export default function TaskManagement() {
       {/* Apple Clock Timer */}
       <TaskTimer />
 
-      {/* iOS Segmented Control for Task Filters */}
+      {/* iOS Segmented Control for Task Filters (32px high) */}
       <div className="flex items-center justify-between">
-        <div className="inline-flex p-1 rounded-full bg-ios-fill/70 backdrop-blur-md">
+        <div className="inline-flex h-8 p-0.5 rounded-full bg-ios-fill/70 backdrop-blur-md items-center">
           <button
             onClick={() => setFilter('all')}
-            className={`px-4 py-1.5 rounded-full text-[13px] font-semibold transition ${
+            className={`h-7 px-3.5 rounded-full text-[13px] font-semibold transition flex items-center justify-center ${
               filter === 'all'
                 ? 'bg-ios-secondary-bg text-ios-label shadow-sm'
                 : 'text-ios-secondary-label hover:text-ios-label'
@@ -97,7 +97,7 @@ export default function TaskManagement() {
           </button>
           <button
             onClick={() => setFilter('pending')}
-            className={`px-4 py-1.5 rounded-full text-[13px] font-semibold transition ${
+            className={`h-7 px-3.5 rounded-full text-[13px] font-semibold transition flex items-center justify-center ${
               filter === 'pending'
                 ? 'bg-ios-secondary-bg text-ios-label shadow-sm'
                 : 'text-ios-secondary-label hover:text-ios-label'
@@ -107,7 +107,7 @@ export default function TaskManagement() {
           </button>
           <button
             onClick={() => setFilter('completed')}
-            className={`px-4 py-1.5 rounded-full text-[13px] font-semibold transition ${
+            className={`h-7 px-3.5 rounded-full text-[13px] font-semibold transition flex items-center justify-center ${
               filter === 'completed'
                 ? 'bg-ios-secondary-bg text-ios-label shadow-sm'
                 : 'text-ios-secondary-label hover:text-ios-label'
@@ -117,7 +117,7 @@ export default function TaskManagement() {
           </button>
         </div>
 
-        <span className="text-[12px] text-ios-secondary-label font-medium hidden sm:inline">
+        <span className="text-[13px] text-ios-secondary-label font-medium hidden sm:inline">
           {filteredTasks.length} tasks listed
         </span>
       </div>
@@ -131,65 +131,65 @@ export default function TaskManagement() {
           return (
             <div
               key={task.id}
-              className={`rounded-[20px] bg-ios-secondary-bg border border-ios-separator/50 p-4 sm:p-5 flex flex-col justify-between shadow-ios-card transition-all ${
+              className={`glass-card p-5 flex flex-col justify-between shadow-sm transition-all ${
                 !isPending ? 'opacity-85' : ''
               }`}
             >
               <div>
                 <div className="flex items-start justify-between gap-2 mb-2 min-w-0">
-                  <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-ios-blue/15 text-ios-blue tabular-nums">
+                  <span className="px-2.5 py-0.5 rounded-full text-[13px] font-semibold bg-ios-blue/18 text-ios-blue tabular-nums">
                     +{task.points} pts reward
                   </span>
 
                   <span
-                    className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold shrink-0 ${
+                    className={`px-2.5 py-0.5 rounded-full text-[13px] font-semibold shrink-0 ${
                       isPending
-                        ? 'bg-ios-orange/15 text-ios-orange'
-                        : 'bg-ios-green/15 text-ios-green'
+                        ? 'bg-ios-orange/18 text-ios-orange'
+                        : 'bg-ios-green/18 text-ios-green'
                     }`}
                   >
                     {isPending ? 'Pending' : 'Completed'}
                   </span>
                 </div>
 
-                <h3 className="font-semibold text-ios-label text-[16px] mb-1 leading-snug break-words">
+                <h3 className="font-semibold text-ios-label text-[17px] mb-1 leading-snug break-words">
                   {task.title}
                 </h3>
 
-                <p className="text-[13px] text-ios-secondary-label mb-3 line-clamp-2">
+                <p className="text-[15px] text-ios-secondary-label mb-3 line-clamp-2">
                   {task.description}
                 </p>
 
-                <div className="p-2.5 rounded-[14px] bg-ios-fill/50 flex items-center justify-between text-[12px] mb-3">
+                <div className="p-3 rounded-[14px] bg-ios-fill/50 flex items-center justify-between text-[13px] mb-3">
                   <div className="flex items-center space-x-2">
                     {assignee.isAll ? (
-                      <Users className="w-3.5 h-3.5 text-ios-blue stroke-[2]" />
+                      <Users className="w-4 h-4 text-ios-blue stroke-[2]" />
                     ) : (
-                      <User className="w-3.5 h-3.5 text-ios-orange stroke-[2]" />
+                      <User className="w-4 h-4 text-ios-orange stroke-[2]" />
                     )}
-                    <span className="font-medium text-ios-label">{assignee.label}</span>
+                    <span className="font-medium text-ios-label text-[13px]">{assignee.label}</span>
                   </div>
                   {assignee.team && (
-                    <span className="text-[11px] text-ios-secondary-label font-medium">
+                    <span className="text-[13px] text-ios-secondary-label font-medium">
                       {assignee.team}
                     </span>
                   )}
                 </div>
               </div>
 
-              {/* Actions */}
-              <div className="pt-3 border-t border-ios-separator/50 flex items-center justify-between gap-2">
+              {/* Actions (44px min-height) */}
+              <div className="pt-3 border-t border-ios-separator/60 flex items-center justify-between gap-2">
                 {isPending ? (
                   <button
                     type="button"
                     onClick={() => completeTask(task.id)}
-                    className="flex-1 py-2 px-3 rounded-full bg-ios-green text-white font-semibold text-[13px] transition ios-pressable flex items-center justify-center space-x-1.5 shadow-sm"
+                    className="flex-1 min-h-[44px] py-2 px-3 rounded-[14px] bg-ios-green text-white font-semibold text-[17px] transition ios-pressable flex items-center justify-center space-x-1.5 shadow-sm"
                   >
                     <Check className="w-4 h-4 stroke-[2.5]" />
                     <span>Complete</span>
                   </button>
                 ) : (
-                  <div className="flex-1 py-2 px-3 rounded-full bg-ios-green/15 text-ios-green font-semibold text-[13px] flex items-center justify-center space-x-1">
+                  <div className="flex-1 min-h-[44px] py-2 px-3 rounded-[14px] bg-ios-green/18 text-ios-green font-semibold text-[15px] flex items-center justify-center space-x-1">
                     <Check className="w-4 h-4 stroke-[2.5]" />
                     <span>Points Awarded</span>
                   </div>
@@ -198,10 +198,11 @@ export default function TaskManagement() {
                 <button
                   type="button"
                   onClick={() => deleteTask(task.id)}
-                  className="w-8 h-8 rounded-full bg-ios-fill text-ios-secondary-label hover:text-ios-red flex items-center justify-center ios-pressable"
+                  aria-label="Delete task"
+                  className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-ios-fill text-ios-secondary-label hover:text-ios-red flex items-center justify-center ios-pressable shrink-0"
                   title="Delete Task"
                 >
-                  <Trash2 className="w-3.5 h-3.5 stroke-[1.75]" />
+                  <Trash2 className="w-4 h-4 stroke-[1.75]" />
                 </button>
               </div>
             </div>
@@ -211,8 +212,8 @@ export default function TaskManagement() {
 
       {/* Create Task iOS Bottom Sheet */}
       {showCreateModal && (
-        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/40 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="w-full max-w-lg bg-ios-sheet-bg rounded-t-[32px] sm:rounded-[28px] p-6 shadow-ios-modal border border-ios-separator/40 animate-in slide-in-from-bottom duration-300">
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/40 backdrop-blur-md animate-in fade-in duration-200">
+          <div className="w-full max-w-lg glass rounded-t-[28px] sm:rounded-[28px] p-6 shadow-2xl border border-ios-separator/40 animate-in slide-in-from-bottom duration-300">
             <div className="ios-grabber" />
 
             <div className="flex items-center justify-between pb-3 border-b border-ios-separator/60 mb-4">
@@ -221,15 +222,15 @@ export default function TaskManagement() {
               </h3>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="w-7 h-7 rounded-full bg-ios-fill flex items-center justify-center text-ios-secondary-label hover:text-ios-label ios-pressable"
+                className="w-8 h-8 rounded-full bg-ios-fill flex items-center justify-center text-ios-secondary-label hover:text-ios-label ios-pressable"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            <form onSubmit={handleCreateSubmit} className="space-y-4 text-[14px]">
+            <form onSubmit={handleCreateSubmit} className="space-y-4 text-[15px]">
               <div>
-                <label className="block text-[12px] font-medium text-ios-secondary-label mb-1">
+                <label className="block text-[13px] font-medium text-ios-secondary-label mb-1">
                   Task title *
                 </label>
                 <input
@@ -238,12 +239,12 @@ export default function TaskManagement() {
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="e.g. Hotfix Production Race Condition"
-                  className="w-full bg-ios-fill rounded-xl px-3.5 py-2.5 text-ios-label placeholder-ios-tertiary-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none"
+                  className="w-full h-11 bg-ios-fill rounded-xl px-4 text-[17px] text-ios-label placeholder-ios-tertiary-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none"
                 />
               </div>
 
               <div>
-                <label className="block text-[12px] font-medium text-ios-secondary-label mb-1">
+                <label className="block text-[13px] font-medium text-ios-secondary-label mb-1">
                   Description
                 </label>
                 <textarea
@@ -251,19 +252,19 @@ export default function TaskManagement() {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="Details of the challenge..."
-                  className="w-full bg-ios-fill rounded-xl px-3.5 py-2.5 text-ios-label placeholder-ios-tertiary-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none resize-none"
+                  className="w-full bg-ios-fill rounded-xl p-3 text-[17px] text-ios-label placeholder-ios-tertiary-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none resize-none"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[12px] font-medium text-ios-secondary-label mb-1">
+                  <label className="block text-[13px] font-medium text-ios-secondary-label mb-1">
                     Assign to
                   </label>
                   <select
                     value={assignedTo}
                     onChange={(e) => setAssignedTo(e.target.value)}
-                    className="w-full bg-ios-fill rounded-xl px-3.5 py-2.5 text-ios-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none"
+                    className="w-full h-11 bg-ios-fill rounded-xl px-3.5 text-[15px] text-ios-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none"
                   >
                     <option value="ALL">All Contestants</option>
                     {activeContestants.map((c) => (
@@ -275,7 +276,7 @@ export default function TaskManagement() {
                 </div>
 
                 <div>
-                  <label className="block text-[12px] font-medium text-ios-secondary-label mb-1">
+                  <label className="block text-[13px] font-medium text-ios-secondary-label mb-1">
                     Reward (pts)
                   </label>
                   <input
@@ -283,7 +284,7 @@ export default function TaskManagement() {
                     min="5"
                     value={points}
                     onChange={(e) => setPoints(e.target.value)}
-                    className="w-full bg-ios-fill rounded-xl px-3.5 py-2.5 text-ios-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none tabular-nums"
+                    className="w-full h-11 bg-ios-fill rounded-xl px-4 text-[17px] text-ios-label focus:outline-none focus:ring-2 focus:ring-ios-blue border-none tabular-nums"
                   />
                 </div>
               </div>
@@ -292,13 +293,13 @@ export default function TaskManagement() {
                 <button
                   type="button"
                   onClick={() => setShowCreateModal(false)}
-                  className="px-4 py-2 rounded-full text-ios-secondary-label font-medium"
+                  className="min-h-[44px] px-5 rounded-[14px] text-ios-secondary-label hover:bg-ios-fill font-semibold text-[17px] transition ios-pressable"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 rounded-full bg-ios-blue text-white font-semibold transition ios-pressable shadow-sm"
+                  className="min-h-[44px] px-6 rounded-[14px] bg-ios-blue text-white font-semibold text-[17px] transition ios-pressable shadow-sm"
                 >
                   Dispatch Task
                 </button>
