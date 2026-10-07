@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "SF Pro Display", "SF Pro Icons", "PingFang SC", "Helvetica Neue", Helvetica, Inter, Arial, sans-serif;
+  --font-mono: "SF Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* iOS Light Mode (Default Root) */
+  --ios-bg: #F2F2F7;
+  --ios-secondary-bg: #FFFFFF;
+  --ios-tertiary-bg: #E5E5EA;
+  --ios-separator: #C6C6C8;
+  --ios-label: #000000;
+  --ios-secondary-label: rgba(60, 60, 67, 0.6);
+  --ios-tertiary-label: rgba(60, 60, 67, 0.3);
+  --ios-fill: rgba(120, 120, 128, 0.16);
+  --ios-secondary-fill: rgba(120, 120, 128, 0.08);
+  --ios-blue: #007AFF;
+  --ios-material-bg: rgba(255, 255, 255, 0.85);
+  --ios-sheet-bg: #FFFFFF;
+  --ios-card-border: rgba(0, 0, 0, 0.05);
+}
+
+.dark, :root[class~="dark"] {
+  /* iOS Dark Mode */
+  --ios-bg: #000000;
+  --ios-secondary-bg: #1C1C1E;
+  --ios-tertiary-bg: #2C2C2E;
+  --ios-separator: #38383A;
+  --ios-label: #FFFFFF;
+  --ios-secondary-label: rgba(235, 235, 245, 0.6);
+  --ios-tertiary-label: rgba(235, 235, 245, 0.3);
+  --ios-fill: rgba(120, 120, 128, 0.36);
+  --ios-secondary-fill: rgba(120, 120, 128, 0.18);
+  --ios-blue: #0A84FF;
+  --ios-material-bg: rgba(28, 28, 30, 0.82);
+  --ios-sheet-bg: #1C1C1E;
+  --ios-card-border: rgba(255, 255, 255, 0.08);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: clip;
+  scroll-padding-top: calc(3.5rem + 16px);
+}
+
+@layer base {
+  * {
+    border-color: var(--ios-separator);
+  }
+
+  body {
+    background-color: var(--ios-bg);
+    color: var(--ios-label);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+}
+
+/* iOS Translucent Materials */
+.ios-blur {
+  background-color: var(--ios-material-bg);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+}
+
+.ios-card {
+  background-color: var(--ios-secondary-bg);
+  border-radius: 20px;
+  border: 0.5px solid var(--ios-card-border);
+  transition: transform 0.2s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.2s ease;
+}
+
+.ios-card:active {
+  transform: scale(0.985);
+}
+
+.ios-grouped-list {
+  background-color: var(--ios-secondary-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 0.5px solid var(--ios-card-border);
+}
+
+/* Hairline separator */
+.ios-separator {
+  border-bottom: 0.5px solid var(--ios-separator);
+}
+
+/* iOS Tap Feedback */
+.ios-pressable {
+  transition: transform 0.18s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.18s ease;
+}
+
+.ios-pressable:active {
+  transform: scale(0.96);
+  opacity: 0.85;
+}
+
+/* iOS Grabber Handle for Sheets */
+.ios-grabber {
+  width: 36px;
+  height: 5px;
+  border-radius: 9999px;
+  background-color: var(--ios-tertiary-label);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 12px;
+}
+
+/* Subtle clean scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ios-fill);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ios-secondary-label);
+}
